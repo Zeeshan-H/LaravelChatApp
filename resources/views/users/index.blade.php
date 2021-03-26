@@ -44,7 +44,13 @@
                             <div class="flex-grow-1 pl-3">
                                 {{-- @if(auth()->user()->id == 2) <span id="status"></span> @endif
                                 @if(auth()->user()->id == 3) <span id="status2"></span> @endif --}}
-                                <strong>@if(auth()->user()->id == 2) Ahmed @else Zeeshan @endif</strong>
+                                @php 
+                                $firstauthuser = App\Models\User::where('id',2)->first(); 
+                                $seconauthuser = App\Models\User::where('id',3)->first(); 
+                                $firstuser = $firstauthuser->name;
+                                $seconduser = $seconauthuser->name;
+                                @endphp
+                                <strong>@if(auth()->user()->id == 2) {{ $firstuser }} @else {{ $seconduser }} @endif</strong>
 {{--                                <div class="text-muted small"><em>Typing...</em></div>--}}
                             </div>
                             <div>
